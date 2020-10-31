@@ -21,7 +21,7 @@
     "require": {
         "php": "^7.1",
         "contao/core-bundle": "^4.4",
-        "symfony/framework-bundle": "^3.3"
+        "contao-community-alliance/composer-plugin": "^2.4.0 || 3.*"
     },
     "conflict": {
         "contao/core": "*",
