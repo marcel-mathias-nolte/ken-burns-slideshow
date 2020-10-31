@@ -1,6 +1,6 @@
 <script>
     var slideShowUrls = [];
-    <?php foreach ($this->images as $image): ?>slideShowUrls.push('<?php echo $image->href; ?>'); <?php endforeach; ?>
+    <?php foreach ($this->images as $image): ?>slideShowUrls.push('<?php echo $image->src; ?>'); <?php endforeach; ?>
     $(function() {
         $('<div id="canvas_<?php echo $this->id; ?>" class="canvas_ken_burns"></div>').appendTo($('body'));
         $('#canvas_<?php echo $this->id; ?>').kenBurnsSlideshow({

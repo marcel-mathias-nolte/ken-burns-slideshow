@@ -164,8 +164,8 @@
         };
         var iw = slide.data('width');
         var ih = slide.data('height');
-        var cw = $('#canvas').width();
-        var ch = $('#canvas').height();
+        var cw = $(this.element).width();
+        var ch = $(this.element).height();
         var min_iw = 0;
         var min_ih = 0;
         if (iw / ih > cw / ch) {
