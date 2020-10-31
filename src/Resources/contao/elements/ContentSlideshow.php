@@ -41,20 +41,17 @@ class ContentGallery extends \Contao\ContentElement
      */
     public function generate()
     {
-        // Use the home directory of the current user as file source
-        if ($this->useHomeDir && FE_USER_LOGGED_IN)
+        if (TL_MODE == 'BE')
         {
-            $this->import(\Contao\FrontendUser::class, 'User');
+            $objTemplate = new \BackendTemplate('be_wildcard');
 
-            if ($this->User->assignDir && $this->User->homeDir)
-            {
-                $this->multiSRC = array($this->User->homeDir);
-            }
+            $objTemplate->wildcard = '### ' . $GLOBALS['TL_LANG']['CTE']['mmn_kenburns'][0] . ' ###';
+            $objTemplate->id = $this->id;
+
+            return $objTemplate->parse();
         }
-        else
-        {
-            $this->multiSRC = \Contao\StringUtil::deserialize($this->multiSRC);
-        }
+
+        $this->multiSRC = \Contao\StringUtil::deserialize($this->multiSRC);
 
         // Return if there are no files
         if (empty($this->multiSRC) || !\is_array($this->multiSRC))
@@ -81,6 +78,8 @@ class ContentGallery extends \Contao\ContentElement
      */
     protected function compile()
     {
+        $this->Template->id = md5(uniqid());
+
         $images = array();
         $auxDate = array();
         $objFiles = $this->objFiles;
