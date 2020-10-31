@@ -142,13 +142,6 @@ class ContentSlideshow extends \Contao\ContentElement
                         continue;
                     }
 
-                    $newPath = DcaCallbacks::getBlurredSrc($objSubfiles);;
-                    if (!$newPath) {
-                        continue;
-                    } elseif ($newPath != $objSubfiles->path) {
-                        $objSubfiles->path = $newPath;
-                    }
-
                     $objFile = new \Contao\File($objSubfiles->path);
 
                     if (!$objFile->isImage)
