@@ -1,8 +1,8 @@
 {
-    "name": "marcel-mathias-nolte/contao4-base",
+    "name": "marcel-mathias-nolte/ken-burns-slideshow",
     "type": "contao-bundle",
-    "description": "Skeleton for all my Contao 4 bundles",
-    "homepage": "https://marcel.live",
+    "description": "Provides a slideshow with Ken-Burns-effect which is shown in fullscreen mode",
+    "homepage": "https://github.com/marcel-mathias-nolte",
     "license": "LGPL-3.0-or-later",
     "authors": [
         {
@@ -15,11 +15,11 @@
         },
         {
             "name": "Marcel Mathias Nolte",
-            "homepage": "https://mrcel.live"
+            "homepage": "https://github.com/marcel-mathias-nolte"
         }
     ],
     "require": {
-        "php": "^5.6 || ^7.0",
+        "php": "^7.1",
         "contao/core-bundle": "4.4.*",
         "symfony/framework-bundle": "^3.3"
     },
@@ -37,20 +37,20 @@
         "symfony/phpunit-bridge": "^3.2"
     },
     "extra": {
-        "contao-manager-plugin": "MarcelMathiasNolte\\SkeletonBundle\\ContaoManager\\Plugin"
+        "contao-manager-plugin": "MarcelMathiasNolte\\KenBurnsSlideshowBundle\\ContaoManager\\Plugin"
     },
     "autoload": {
         "psr-4": {
-            "MarcelMathiasNolte\\SkeletonBundle\\": "src/"
+            "MarcelMathiasNolte\\KenBurnsSlideshowBundle\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "MarcelMathiasNolte\\SkeletonBundle\\Tests\\": "tests/"
+            "MarcelMathiasNolte\\KenBurnsSlideshowBundle\\Tests\\": "tests/"
         }
     },
     "support": {
-        "issues": "https://github.com/marcel-mathias-nolte/contao4-base/issues",
-        "source": "https://github.com/marcel-mathias-nolte/contao4-base"
+        "issues": "https://github.com/marcel-mathias-nolte/ken-burns-slideshow/issues",
+        "source": "https://github.com/marcel-mathias-nolte/ken-burns-slideshow"
     }
 }

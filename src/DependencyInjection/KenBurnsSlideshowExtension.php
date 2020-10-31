@@ -1,21 +1,23 @@
 <?php
 
 /*
- * This file is part of SkeletonBundle.
+ * This file is part of KenBurnsSlideshowBundle.
  *
- * (c) John Doe
- *
- * @license LGPL-3.0-or-later
+ * @package   KenBurnsSlideshowBundle
+ * @author    Marcel Mathias Nolte
+ * @copyright Marcel Mathias Nolte 2020
+ * @website	  https://github.com/marcel-mathias-nolte
+ * @license   LGPL-3.0-or-later
  */
 
-namespace MarcelMathiasNolte\SkeletonBundle\DependencyInjection;
+namespace MarcelMathiasNolte\KenBurnsSlideshowBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
-class ContaoSkeletonExtension extends Extension
+class KenBurnsSlideshowExtension extends Extension
 {
     /**
      * {@inheritdoc}

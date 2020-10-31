@@ -1,0 +1,24 @@
+.slide {
+    position: absolute;
+    opacity: 0;
+    transform: translateZ(0);
+}
+.pause_ov,
+.play_ov {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: #fff;
+    transition: opacity 1s ease-in-out;
+    opacity: 1;
+    font-size: 300px;
+    z-index: 10;
+    display: none;
+}
+.pause_ov i,
+.play_ov i {
+    position: relative;
+    top: -150px;
+}

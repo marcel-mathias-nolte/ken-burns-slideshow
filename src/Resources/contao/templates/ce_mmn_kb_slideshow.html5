@@ -1,0 +1,16 @@
+<script>
+    var slideShowUrls = [];
+    <?php foreach ($this->images as $image): ?>slideShowUrls.push('<?php echo $image->href; ?>'); <?php endforeach; ?>
+    $(function() {
+        $('<div id="canvas_<?php echo $this->id; ?>"></div>').appendTo($('body'));
+        $('#canvas_<?php echo $this->id; ?>').kenBurnsSlideshow({
+            urlPrefix: '',
+            images: slideShowUrls,
+            timePerSlide: <?php echo $this->timePerSlide; ?>,
+            suffle: <?php echo $this->shuffle ? 'true' : 'false'; ?>,
+            opacityTransistionTime: <?php echo $this->opacityTransistionTime/1000; ?>,
+            maxZoom: <?php echo $this->maxZoom/100; ?>
+        });
+        $('body').addClass('slideshow');
+    });
+</script>
