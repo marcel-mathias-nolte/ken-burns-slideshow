@@ -1,10 +1,10 @@
-.slide {
+.canvas_ken_burns .slide {
     position: absolute;
     opacity: 0;
     transform: translateZ(0);
 }
-.pause_ov,
-.play_ov {
+.canvas_ken_burns .pause_ov,
+.canvas_ken_burns .play_ov {
     position: absolute;
     top: 50%;
     left: 0;
@@ -17,8 +17,19 @@
     z-index: 10;
     display: none;
 }
-.pause_ov i,
-.play_ov i {
+.canvas_ken_burns .pause_ov i,
+.canvas_ken_burns .play_ov i {
     position: relative;
     top: -150px;
+}
+.canvas_ken_burns {
+    position: fixed!important;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    overflow: hidden;
+    transform: translateZ(0);
+    z-index: 1;
 }
