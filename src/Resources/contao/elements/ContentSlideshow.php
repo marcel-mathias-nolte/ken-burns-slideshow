@@ -54,6 +54,7 @@ class ContentSlideshow extends \Contao\ContentElement
         $this->multiSRC = \Contao\StringUtil::deserialize($this->multiSRC);
 
         // Return if there are no files
+
         if (empty($this->multiSRC) || !\is_array($this->multiSRC))
         {
             return '';
