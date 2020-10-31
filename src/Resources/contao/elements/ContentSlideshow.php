@@ -20,7 +20,7 @@ use \Contao\Model\Collection;
  *
  * @author Leo Feyer <https://github.com/leofeyer>
  */
-class ContentGallery extends \Contao\ContentElement
+class ContentSlideshow extends \Contao\ContentElement
 {
     /**
      * Files object
