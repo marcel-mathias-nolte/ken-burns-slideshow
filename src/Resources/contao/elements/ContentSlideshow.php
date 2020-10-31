@@ -97,8 +97,10 @@ class ContentSlideshow extends \Contao\ContentElement
             // Single files
             if ($objFiles->type == 'file')
             {
-                $newPath = DcaCallbacks::getBlurredSrc($objFiles);
-                if ($newPath != $objFiles->path) {
+
+                // Skip subfolders
+                if (!FE_USER_LOGGED_IN && $objFiles->hidden)
+                {
                     continue;
                 }
 
@@ -135,7 +137,7 @@ class ContentSlideshow extends \Contao\ContentElement
                 while ($objSubfiles->next())
                 {
                     // Skip subfolders
-                    if ($objSubfiles->type == 'folder')
+                    if ($objSubfiles->type == 'folder' || (!FE_USER_LOGGED_IN && $objSubfiles->hidden))
                     {
                         continue;
                     }
