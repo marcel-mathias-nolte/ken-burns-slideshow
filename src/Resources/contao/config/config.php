@@ -13,4 +13,4 @@
 namespace MarcelMathiasNolte\KenBurnsSlideshowBundle;
 
 // Content elements
-$GLOBALS['TL_CTE']['media']['mmn_kenburns'] = 'MarcelMathiasNolte\KenBurnsSlideshowBundle\ContentSlideshow';
+$GLOBALS['TL_CTE']['media']['mmn_kenburns'] = 'MarcelMathiasNolte\KenBurnsSlideshowBundle\Elements\ContentSlideshow';
