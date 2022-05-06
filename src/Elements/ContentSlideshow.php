@@ -46,7 +46,8 @@ class ContentSlideshow extends \Contao\ContentElement
             $objTemplate = new \BackendTemplate('be_wildcard');
 
             $objTemplate->wildcard = '### ' . $GLOBALS['TL_LANG']['CTE']['mmn_kenburns'][0] . ' ###';
-            $objTemplate->id = $this->id;
+			$objTemplate->title = $this->title;
+			$objTemplate->id = $this->id;
 
             return $objTemplate->parse();
         }
@@ -68,8 +69,8 @@ class ContentSlideshow extends \Contao\ContentElement
             return '';
         }
 
-        $GLOBALS['TL_CSS'][] = 'bundles/kenburnsslideshow/css/jquery.kenBurnsSlideshow.css';
-        $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/kenburnsslideshow/js/jquery.kenBurnsSlideshow.js';
+        $GLOBALS['TL_CSS']['jquery.kenBurnsSlideshow.css'] = 'bundles/kenburnsslideshow/css/jquery.kenBurnsSlideshow.css';
+        $GLOBALS['TL_JAVASCRIPT']['jquery.kenBurnsSlideshow.js'] = 'bundles/kenburnsslideshow/js/jquery.kenBurnsSlideshow.js';
 
         return parent::generate();
     }

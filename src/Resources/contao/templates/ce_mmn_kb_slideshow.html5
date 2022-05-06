@@ -1,16 +1,25 @@
 <script>
-    var slideShowUrls = [];
+    if (typeof slideShowUrls === 'undefined') {
+        var slideShowUrls = [];
+    }
     <?php foreach ($this->images as $image): ?>slideShowUrls.push('<?php echo $image->src; ?>'); <?php endforeach; ?>
-    $(function() {
-        $('<div id="canvas_<?php echo $this->id; ?>" class="canvas_ken_burns"></div>').appendTo($('body'));
-        $('#canvas_<?php echo $this->id; ?>').kenBurnsSlideshow({
-            urlPrefix: '',
-            images: slideShowUrls,
-            timePerSlide: <?php echo $this->timePerSlide; ?>,
-            suffle: <?php echo $this->shuffle ? 'true' : 'false'; ?>,
-            opacityTransistionTime: <?php echo $this->opacityTransistionTime/1000; ?>,
-            maxZoom: <?php echo $this->maxZoom/100; ?>
+
+
+    if (typeof kenBurnsSlideshowActive === 'undefined') {
+        var kenBurnsSlideshowActive = true;
+        $(function() {
+            setTimeout(function() {
+                $('<div id="canvas" class="canvas_ken_burns"></div>').appendTo($('body'));
+                $('#canvas').kenBurnsSlideshow({
+                    urlPrefix: '',
+                    images: slideShowUrls,
+                    timePerSlide: <?php echo $this->timePerSlide; ?>,
+                    suffle: <?php echo $this->shuffle ? 'true' : 'false'; ?>,
+                    opacityTransistionTime: <?php echo $this->opacityTransistionTime/1000; ?>,
+                    maxZoom: <?php echo $this->maxZoom/100; ?>
+                });
+                $('body').addClass('slideshow');
+            }, 500);
         });
-        $('body').addClass('slideshow');
-    });
+    }
 </script>
