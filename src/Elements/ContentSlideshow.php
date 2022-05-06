@@ -46,7 +46,7 @@ class ContentSlideshow extends \Contao\ContentElement
             $objTemplate = new \BackendTemplate('be_wildcard');
 
             $objTemplate->wildcard = '### ' . $GLOBALS['TL_LANG']['CTE']['mmn_kenburns'][0] . ' ###';
-			$objTemplate->title = $this->title;
+			$objTemplate->title = $this->mm_kb_title;
 			$objTemplate->id = $this->id;
 
             return $objTemplate->parse();
