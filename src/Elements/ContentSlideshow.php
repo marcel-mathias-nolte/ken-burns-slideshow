@@ -99,12 +99,6 @@ class ContentSlideshow extends \Contao\ContentElement
             if ($objFiles->type == 'file')
             {
 
-                // Skip subfolders
-                if (!FE_USER_LOGGED_IN && $objFiles->hidden)
-                {
-                    continue;
-                }
-
                 $objFile = new \Contao\File($objFiles->path);
 
                 if (!$objFile->isImage)
@@ -138,7 +132,7 @@ class ContentSlideshow extends \Contao\ContentElement
                 while ($objSubfiles->next())
                 {
                     // Skip subfolders
-                    if ($objSubfiles->type == 'folder' || (!FE_USER_LOGGED_IN && $objSubfiles->hidden))
+                    if ($objSubfiles->type == 'folder')
                     {
                         continue;
                     }
@@ -157,8 +151,7 @@ class ContentSlideshow extends \Contao\ContentElement
                         'uuid'       => $objSubfiles->uuid,
                         'name'       => $objFile->basename,
                         'singleSRC'  => $objSubfiles->path,
-                        'filesModel' => $objSubfiles->current(),
-                        'isHidden'   => !FE_USER_LOGGED_IN && $objSubfiles->hidden
+                        'filesModel' => $objSubfiles->current()
                     );
 
                     $auxDate[] = $objFile->mtime;
@@ -166,8 +159,40 @@ class ContentSlideshow extends \Contao\ContentElement
             }
         }
 
+        $member = FE_USER_LOGGED_IN ? \FrontendUser::getInstance() : false;
+        $showFsk18 = $member && $member->isMemberOf(6);
+        $showSexual = $member && $member->isMemberOf(7);
+        if (is_array($images) && count($images) > 0)
+        {
+            foreach ($images as $key => $image)
+            {
+                if (!$showSexual && $image['filesModel']->fsk == 'erotic')
+                {
+                    unset($images[$key]);
+                    continue;
+                }
+                if (!$showFsk18 && $image['filesModel']->fsk == 'porn')
+                {
+                    unset($images[$key]);
+                    continue;
+                }
+                $videoFile = TL_ROOT . '/' . $image['filesModel']->path;
+                $videoFile = substr($videoFile, 0, strlen($videoFile) - strlen($image['filesModel']->extension)) . 'mp4';
+                $videoFile = str_replace('-blur', '', $videoFile);
+                $videoFile = str_replace('-icon', '', $videoFile);
+                $videoFile = str_replace('_blur', '', $videoFile);
+                $videoFile = str_replace('_icon', '', $videoFile);
+                if (file_exists($videoFile)) {
+                    unset($images[$key]);
+                    continue;
+                }
+            }
+        }
+
         $images = array_values($images);
         $arrImages = [];
+
+
         foreach ($images as $i => $image) {
             $objCell = new \stdClass();
             $images[$i]['size'] = $this->size;
